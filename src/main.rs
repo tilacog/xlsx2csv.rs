@@ -148,7 +148,8 @@ fn main() {
         let mut pb = ProgressBar::new(100);
         let rows = range.rows();
         for (i, row) in rows.enumerate() {
-            if i % (size.0 / 100) == 0 {
+            let divisor = size.0 / 100;
+            if divisor != 0 && i / divisor == 0 {
                 pb.inc();
             }
             let cols: Vec<String> = row
